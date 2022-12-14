@@ -2,11 +2,20 @@
 
 namespace Conanti
 {
-	internal class Program
+	internal partial class Program
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello, World!");
+			try
+			{
+				if (args[0].ToLower() == "build")
+				{
+					Build();
+				}
+			} catch (System.IndexOutOfRangeException e)
+			{
+				Console.WriteLine("No arguments specified.");
+			}
 		}
 	}
 }
