@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Conanti": {
-      "commandName": "Project",
-      "commandLineArgs": "build C:\\Users\\Dan\\Documents\\ConantiTest\\Test"
-    }
-  }
-}
