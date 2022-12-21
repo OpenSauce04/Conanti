@@ -10,7 +10,17 @@ namespace Conanti
 			{
 				if (args[0].ToLower() == "build")
 				{
-					Build();
+					string srcDir;
+					try
+					{
+						srcDir = args[1];
+					}
+					catch (System.IndexOutOfRangeException e)
+					{
+						srcDir = "";
+					}
+
+					BuildProgram(srcDir);
 				}
 			} catch (System.IndexOutOfRangeException e)
 			{

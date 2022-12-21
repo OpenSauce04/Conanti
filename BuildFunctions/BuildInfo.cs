@@ -10,13 +10,12 @@ namespace Conanti
 		public static IEnumerable<String> Files;
 		public static String SourcePath;
 		public static String BuildPath;
-		public static void Init()
+		public static void Init(string srcDir)
 		{
-			SourcePath = Environment.CurrentDirectory;
-			BuildPath = Path.GetFullPath(Environment.CurrentDirectory + "../build");
-			var pythonExtensions = new List<string> { "py", "pyw", "py3" };
+			SourcePath = srcDir;
+			BuildPath = Path.GetFullPath(srcDir+ "/../build");
 			Files = Directory.EnumerateFiles(SourcePath, "*.*", SearchOption.AllDirectories)
-				             .Where(fileName => pythonExtensions.Contains(Path.GetExtension(fileName).TrimStart('.').ToLowerInvariant()));
+				             .Where(fileName => Path.GetExtension(fileName).TrimStart('.').ToLowerInvariant() == "cnt");
 		}
 	}
 }
