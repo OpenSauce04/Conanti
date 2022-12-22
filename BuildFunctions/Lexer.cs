@@ -12,8 +12,7 @@ namespace Conanti
 			int index = 0;
 			foreach (string line in fileContents)
 			{
-				List<int> breakpoints = new List<int>();
-				breakpoints.Add(0);
+				List<int> breakpoints = new List<int>{0};
 				int charIndex = 0;
 
 				foreach (char character in line)
