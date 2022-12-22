@@ -18,8 +18,11 @@ namespace Conanti
 			foreach (String filePath in BuildInfo.Files)
 			{
 				string[] fileContents = File.ReadAllLines(filePath);
-				List<List<string>> tokenizedContent = Build.Lex(fileContents); // Tokenize file contents
-				Build.LexerTest(tokenizedContent);
+
+				List<List<string>> tokenizedContent;
+				tokenizedContent = Build.Lex(fileContents); // Tokenize file contents;
+				tokenizedContent = Build.Scope(tokenizedContent); // Indent code to conform with Python's whitespace-centric syntax
+				Build.TokenTest(tokenizedContent);
 			}
 
 		}

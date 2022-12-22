@@ -40,7 +40,7 @@ namespace Conanti
 		}
 
 
-		public static void LexerTest(List<List<string>> tokenizedContent)
+		public static void TokenTest(List<List<string>> tokenizedContent)
 		{
 			foreach (List<string> line in tokenizedContent)
 			{
