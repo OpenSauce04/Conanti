@@ -17,7 +17,7 @@ namespace Conanti
 
 				foreach (char character in line)
 				{
-					switch (character)
+					switch (character) // Breakpoint characters
 					{
 						case ' ': breakpoints.Add(charIndex); breakpoints.Add(charIndex+1); break;
 						case '(': breakpoints.Add(charIndex); break;
