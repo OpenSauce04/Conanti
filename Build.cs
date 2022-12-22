@@ -22,6 +22,8 @@ namespace Conanti
 				List<List<string>> tokenizedContent;
 				tokenizedContent = Build.Lex(fileContents); // Tokenize file contents;
 				tokenizedContent = Build.Scope(tokenizedContent); // Indent code to conform with Python's whitespace-centric syntax
+				tokenizedContent = Build.ReplaceTokens(tokenizedContent);
+
 				Build.TokenTest(tokenizedContent);
 			}
 
