@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Conanti
 {
@@ -15,16 +16,19 @@ namespace Conanti
 			// Initialize build environment
 			Build.Init();
 
-			foreach (String filePath in BuildInfo.Files)
+			for (int fileIndex = 0; fileIndex < BuildInfo.SourceFiles.Count(); fileIndex++)
 			{
-				string[] fileContents = File.ReadAllLines(filePath);
+				string[] fileContents = File.ReadAllLines(BuildInfo.SourceFiles[fileIndex]);
 
 				List<List<string>> tokenizedContent;
 				tokenizedContent = Build.Lex(fileContents); // Tokenize file contents;
 				tokenizedContent = Build.Scope(tokenizedContent); // Indent code to conform with Python's whitespace-centric syntax
 				tokenizedContent = Build.ReplaceTokens(tokenizedContent);
 
-				Build.TokenTest(tokenizedContent);
+				string[] newContent;
+				newContent = Build.StitchTokens(tokenizedContent);
+
+				File.WriteAllLines(BuildInfo.BuiltFiles[fileIndex], newContent);
 			}
 
 		}
