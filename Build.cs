@@ -23,11 +23,11 @@ namespace Conanti
 				List<List<string>> tokenizedContent;
 				tokenizedContent = Build.Lex(fileContents); // Tokenize file contents;
 				tokenizedContent = Build.Scope(tokenizedContent); // Indent code to conform with Python's whitespace-centric syntax
-				tokenizedContent = Build.ReplaceTokens(tokenizedContent);
+				tokenizedContent = Build.ReplaceTokens(tokenizedContent); // Replace Conanti tokens with Python tokens
 
 				List<string> newContent;
-				newContent = Build.StitchTokens(tokenizedContent);
-				newContent = Build.CleanBlanks(newContent);
+				newContent = Build.StitchTokens(tokenizedContent); // Put tokens back together into a String array that can be written to a file
+				newContent = Build.CleanBlanks(newContent); // Remove blank lines from produced Python file
 
 				File.WriteAllLines(BuildInfo.BuiltFiles[fileIndex], newContent);
 			}
