@@ -17,20 +17,21 @@ namespace Conanti
 
 				foreach (char character in line)
 				{
-					if (character == ' ')
+					switch (character)
 					{
-						breakpoints.Add(charIndex+1);
+						case ' ': breakpoints.Add(charIndex); breakpoints.Add(charIndex+1); break;
+						case '(': breakpoints.Add(charIndex); break;
+						case ')': breakpoints.Add(charIndex+1); break;
 					}
 					charIndex++;
 				}
-				breakpoints.Add(charIndex+1);
+				breakpoints.Add(charIndex);
 
 				List<string> tokenizedLine = new List<string>();
 				for (int i=1; i<breakpoints.Count; i++)
 				{
-					if (((breakpoints[i] - breakpoints[i-1])-1) != 0) {
-						tokenizedLine.Add(line.Substring(breakpoints[i - 1], (breakpoints[i] - breakpoints[i - 1]) - 1));
-					}
+					string token = line.Substring(breakpoints[i - 1], (breakpoints[i] - breakpoints[i - 1]));
+					if (!String.IsNullOrWhiteSpace(token)) { tokenizedLine.Add(token); }
 				}
 				tokenizedContent.Add(tokenizedLine);
 				index++;

@@ -16,6 +16,7 @@ namespace Conanti
 					{
 						case "{": tokenizedContent[lineIndex][tokenIndex] = ":"; break;
 						case "}": tokenizedContent[lineIndex].RemoveAt(tokenIndex); break;
+						case "function": tokenizedContent[lineIndex][tokenIndex] = "def"; break;
 					}
 				}
 			}
