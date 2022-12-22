@@ -5,13 +5,11 @@ namespace Conanti
 {
 	public static partial class Build
 	{
-		public static string[] StitchTokens(List<List<string>> tokenizedContent) {
-			String[] stitchedContent = new String[tokenizedContent.Count];
-			int lineIndex = 0;
+		public static List<string> StitchTokens(List<List<string>> tokenizedContent) {
+			List<string> stitchedContent = new List<string>();
 			foreach (List<string> line in tokenizedContent)
 			{
-				stitchedContent[lineIndex] = String.Join(' ', line);
-				lineIndex++;
+				stitchedContent.Add(String.Join(' ', line));
 			}
 
 			return stitchedContent;

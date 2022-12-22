@@ -25,8 +25,9 @@ namespace Conanti
 				tokenizedContent = Build.Scope(tokenizedContent); // Indent code to conform with Python's whitespace-centric syntax
 				tokenizedContent = Build.ReplaceTokens(tokenizedContent);
 
-				string[] newContent;
+				List<string> newContent;
 				newContent = Build.StitchTokens(tokenizedContent);
+				newContent = Build.CleanBlanks(newContent);
 
 				File.WriteAllLines(BuildInfo.BuiltFiles[fileIndex], newContent);
 			}
