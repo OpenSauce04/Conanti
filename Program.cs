@@ -15,14 +15,14 @@ namespace Conanti
 					{
 						srcDir = args[1];
 					}
-					catch (System.IndexOutOfRangeException e)
+					catch (IndexOutOfRangeException)
 					{
 						srcDir = "";
 					}
 
 					BuildProgram(srcDir);
 				}
-			} catch (System.IndexOutOfRangeException e)
+			} catch (IndexOutOfRangeException)
 			{
 				Console.WriteLine("No arguments specified.");
 			}

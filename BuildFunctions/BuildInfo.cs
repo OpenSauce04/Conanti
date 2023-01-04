@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+# nullable disable
+
 namespace Conanti
 {
 	public static class BuildInfo
