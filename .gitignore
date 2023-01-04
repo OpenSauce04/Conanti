@@ -1,5 +1,10 @@
+#ignore
 .vs/
+.vscode/
 bin/
 obj/
 *.user
-Properties/
+Properties/*
+
+#include
+!Properties/launchSettings.json

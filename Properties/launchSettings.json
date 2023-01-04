@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Conanti": {
+      "commandName": "Project",
+      "commandLineArgs": "build Tests"
+    }
+  }
+}
