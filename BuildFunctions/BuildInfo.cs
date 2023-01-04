@@ -14,7 +14,8 @@ namespace Conanti
 		public static void Init(string srcDir)
 		{
 			SourcePath = srcDir;
-			BuildPath = Path.GetFullPath(srcDir+ "/../build");
+			Directory.CreateDirectory(srcDir + "/../build");
+			BuildPath = Path.GetFullPath(srcDir + "/../build");
 			BuiltFiles = SourceFiles = Directory.EnumerateFiles(BuildPath, "*.*", SearchOption.AllDirectories)
 												.Where(fileName => Path.GetExtension(fileName).TrimStart('.').ToLowerInvariant() == "cnt").ToArray<String>();
 
