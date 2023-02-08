@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Conanti
 {
-	internal partial class Program
+	public static partial class Build
 	{
-		static void BuildProgram(String buildDir)
+		public static void Run(String buildDir)
 		{
 
 			// Initialize build info

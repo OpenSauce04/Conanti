@@ -2,9 +2,9 @@
 
 namespace Conanti
 {
-	internal partial class Program
+	internal class Conanti
 	{
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
 			try
 			{
@@ -20,7 +20,7 @@ namespace Conanti
 						srcDir = "";
 					}
 
-					BuildProgram(srcDir);
+					Build.Run(srcDir);
 				}
 			} catch (IndexOutOfRangeException)
 			{
