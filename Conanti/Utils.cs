@@ -5,7 +5,7 @@ namespace Conanti
 	internal class Utils
 	{
 		// MODIFIED CODE FROM STACKOVERFLOW: https://stackoverflow.com/a/36484371 //
-		public static void CloneDirectory(string root, string dest)
+		internal static void CloneDirectory(string root, string dest)
 		{
 			foreach (var directory in Directory.GetDirectories(root))
 			{
@@ -26,7 +26,7 @@ namespace Conanti
 		// END //
 
 		// CODE FROM STACKOVERFLOW: https://stackoverflow.com/a/22282428 //
-		public static void RecursiveDelete(DirectoryInfo baseDir)
+		internal static void RecursiveDelete(DirectoryInfo baseDir)
 		{
 			if (!baseDir.Exists)
 				return;

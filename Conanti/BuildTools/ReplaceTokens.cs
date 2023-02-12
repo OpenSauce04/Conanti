@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Conanti
 {
-	public static partial class BuildTools
+	internal static partial class BuildTools
 	{
-		public static List<List<string>> ReplaceTokens(List<List<string>> tokenizedContent)
+		internal static List<List<string>> ReplaceTokens(List<List<string>> tokenizedContent)
 		{
 
 			for (int lineIndex = 0; lineIndex < tokenizedContent.Count; lineIndex++)

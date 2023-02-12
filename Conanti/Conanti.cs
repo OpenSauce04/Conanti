@@ -4,7 +4,7 @@ namespace Conanti
 {
 	public static partial class Conanti
 	{
-		public static void Main(string[] args)
+		internal static void Main(string[] args)
 		{
 			try
 			{

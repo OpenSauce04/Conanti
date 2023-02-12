@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Conanti
 {
-	public static partial class BuildTools
+	internal static partial class BuildTools
 	{
-		public static List<List<string>> Scope(List<List<string>> tokenizedContent)
+		internal static List<List<string>> Scope(List<List<string>> tokenizedContent)
 		{
 			int lineIndex = 0;
 			int indent = 0;

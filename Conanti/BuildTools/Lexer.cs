@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Conanti
 {
-	public static partial class BuildTools
+	internal static partial class BuildTools
 	{
-		public static List<List<string>> Lex(string[] fileContents) // I think this is what the verb of using a Lexer is? https://www.wordsense.eu/lexer/
+		internal static List<List<string>> Lex(string[] fileContents) // I think this is what the verb of using a Lexer is? https://www.wordsense.eu/lexer/
 		{
 			List<List<string>> tokenizedContent = new List<List<string>>();
 			int index = 0;
@@ -41,7 +41,7 @@ namespace Conanti
 		}
 
 
-		public static void TokenTest(List<List<string>> tokenizedContent)
+		internal static void TokenTest(List<List<string>> tokenizedContent)
 		{
 			foreach (List<string> line in tokenizedContent)
 			{

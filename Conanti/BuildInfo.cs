@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace Conanti
 {
-	internal static class BuildInfo
+	public static class BuildInfo
 	{
-		public static String[] SourceFiles = null!;
-		public static String[] BuiltFiles = null!;
-		public static String SourcePath = null!;
-		public static String BuildPath = null!;
+		public static string[] SourceFiles = null!;
+		public static string[] BuiltFiles = null!;
+		public static string SourcePath = null!;
+		public static string BuildPath = null!;
 		public static void Generate(string srcDir)
 		{
 			SourcePath = srcDir;
@@ -28,10 +28,10 @@ namespace Conanti
 				BuiltFiles[i] = BuiltFiles[i].Replace(SourcePath, BuildPath);
 			}
 		}
-		private static String[] getSourceFiles()
+		private static string[] getSourceFiles()
 		{
 			return Directory.EnumerateFiles(SourcePath, "*.*", SearchOption.AllDirectories)
-												.Where(fileName => Path.GetExtension(fileName).TrimStart('.').ToLowerInvariant() == "cnt").ToArray<String>();
+												.Where(fileName => Path.GetExtension(fileName).TrimStart('.').ToLowerInvariant() == "cnt").ToArray<string>();
 		}
 	}
 }

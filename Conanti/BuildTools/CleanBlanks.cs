@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Conanti
 {
-	public static partial class BuildTools
+	internal static partial class BuildTools
 	{
-		public static List<string> CleanBlanks(List<string> newContent)
+		internal static List<string> CleanBlanks(List<string> newContent)
 		{
 			for (int lineIndex = 0; lineIndex < newContent.Count; lineIndex++)
 			{
