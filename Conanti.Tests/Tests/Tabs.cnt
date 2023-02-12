@@ -1,0 +1,10 @@
+﻿function test1() {
+  print("A")
+}
+
+function test2() {
+	print("B")
+}
+
+test1()
+test2()
