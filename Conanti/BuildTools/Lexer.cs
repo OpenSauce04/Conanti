@@ -31,7 +31,7 @@ namespace Conanti
 				for (int i=1; i<breakpoints.Count; i++)
 				{
 					string token = line.Substring(breakpoints[i - 1], (breakpoints[i] - breakpoints[i - 1]));
-					if (!String.IsNullOrWhiteSpace(token)) { tokenizedLine.Add(token); }
+					if (!string.IsNullOrWhiteSpace(token)) { tokenizedLine.Add(token); }
 				}
 				tokenizedContent.Add(tokenizedLine);
 				index++;

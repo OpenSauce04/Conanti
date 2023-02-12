@@ -1,0 +1,8 @@
+﻿class TestClass {
+  x = 0
+  TestClass(self) {
+    self.x = 1
+  }
+}
+testObject = TestClass()
+print(testObject.x)

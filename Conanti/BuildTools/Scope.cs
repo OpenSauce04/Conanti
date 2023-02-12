@@ -24,19 +24,33 @@ namespace Conanti
 
 					if (indent < 0)
 					{
-						throw (new Exception("Error: '}' used without an accompanying '{'"));
+						Console.WriteLine("ERROR: '}' used without an accompanying '{'\nStopping...");
+						Environment.Exit(1);
 					}
 				}
 
 				if (indent > 0)
 				{
-					tokenizedContent[lineIndex+1].Insert(0, String.Concat(Enumerable.Repeat(" ", indent-1))); // -1 because the existence of the token will create a space when stitched together
+					try
+					{
+						tokenizedContent[lineIndex + 1].Insert(0, String.Concat(Enumerable.Repeat(" ", indent*4 - 1))); // -1 because the existence of the token will create a space when stitched together
+					}
+					catch (ArgumentOutOfRangeException)
+					{
+						Console.WriteLine("ERROR: '{' used without an accompanying '}'\nStopping...");
+						Environment.Exit(1);
+					}
 				}
 				lineIndex++;
 
 			}
 
 			return tokenizedContent;
+		}
+
+		internal static int GetScope(string indents)
+		{
+			return (indents.Count(x => x == ' ')+1) / 4;
 		}
 	}
 }
