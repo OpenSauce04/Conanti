@@ -28,7 +28,7 @@ namespace Conanti
 
 					if (indent < 0)
 					{
-						Console.WriteLine("ERROR: File finished at scope level " + indent + "\nStopping...");
+						Console.WriteLine(ErrorMessages.GenerateError(ErrorMessages.NonZeroScope(indent)));
 						Environment.Exit(1);
 					}
 				}
@@ -41,7 +41,7 @@ namespace Conanti
 					}
 					catch (ArgumentOutOfRangeException)
 					{
-						Console.WriteLine("ERROR: Scope level hit negative number " + indent + "\nStopping...");
+						Console.WriteLine(ErrorMessages.GenerateError(ErrorMessages.NegativeScope(indent)));
 						Environment.Exit(1);
 					}
 				}
