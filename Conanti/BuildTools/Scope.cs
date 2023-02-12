@@ -16,15 +16,19 @@ namespace Conanti
 
 				foreach (string token in line)
 				{
+					Console.WriteLine(token + " | " + indent);
 					switch (token)
 					{
+						case ":":
 						case "{": indent++; break;
+
+						case "break":
 						case "}": indent--; break;
 					}
 
 					if (indent < 0)
 					{
-						Console.WriteLine("ERROR: '}' used without an accompanying '{'\nStopping...");
+						Console.WriteLine("ERROR: File finished at scope level " + indent + "\nStopping...");
 						Environment.Exit(1);
 					}
 				}
@@ -37,7 +41,7 @@ namespace Conanti
 					}
 					catch (ArgumentOutOfRangeException)
 					{
-						Console.WriteLine("ERROR: '{' used without an accompanying '}'\nStopping...");
+						Console.WriteLine("ERROR: Scope level hit negative number " + indent + "\nStopping...");
 						Environment.Exit(1);
 					}
 				}

@@ -1,0 +1,16 @@
+﻿function switchTest(x) {
+	switch(x) {
+		case "a":
+			print("1")
+			break
+		case "b":
+			print("2")
+			break
+		case default:
+			print("3")
+			break
+	}
+}
+
+switchTest("a")
+switchTest("c")

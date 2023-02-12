@@ -19,9 +19,11 @@ namespace Conanti
 				{
 					switch (character) // Breakpoint characters
 					{
+						case '\t':
 						case ' ': breakpoints.Add(charIndex); breakpoints.Add(charIndex+1); break; // Set two break points before and after the space so that the empty token is caught later on and removed
 						case '(': breakpoints.Add(charIndex); break;
 						case ')': breakpoints.Add(charIndex+1); break;
+						case ':': breakpoints.Add(charIndex); breakpoints.Add(charIndex + 1); break;
 					}
 					charIndex++;
 				}

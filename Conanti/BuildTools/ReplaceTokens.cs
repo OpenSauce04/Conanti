@@ -20,6 +20,7 @@ namespace Conanti
 					switch (tokenizedContent[lineIndex][tokenIndex])
 					{
 						case "{": tokenizedContent[lineIndex][tokenIndex] = ":"; break;
+						case "break":
 						case "}": tokenizedContent[lineIndex][tokenIndex] = ""; break;
 						case "function": tokenizedContent[lineIndex][tokenIndex] = "def"; break;
 						case "switch": tokenizedContent[lineIndex][tokenIndex] = "match"; break;

@@ -18,6 +18,9 @@
     <None Update="Tests\Scope.cnt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Tests\switch.cnt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Tests\Tabs.cnt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
