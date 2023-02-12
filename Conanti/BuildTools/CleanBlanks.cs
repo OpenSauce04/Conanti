@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Conanti
 {
-	public static partial class Build
+	public static partial class BuildTools
 	{
 		public static List<string> CleanBlanks(List<string> newContent)
 		{

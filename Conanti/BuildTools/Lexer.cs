@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Conanti
 {
-	public static partial class Build
+	public static partial class BuildTools
 	{
 		public static List<List<string>> Lex(string[] fileContents) // I think this is what the verb of using a Lexer is? https://www.wordsense.eu/lexer/
 		{

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Conanti
 {
-	public static partial class Build
+	public static partial class BuildTools
 	{
 		public static List<List<string>> ReplaceTokens(List<List<string>> tokenizedContent)
 		{
@@ -12,6 +12,7 @@ namespace Conanti
 			{
 				for (int tokenIndex = 0; tokenIndex < tokenizedContent[lineIndex].Count; tokenIndex++)
 				{
+
 					switch(tokenizedContent[lineIndex][tokenIndex])
 					{
 						case "{": tokenizedContent[lineIndex][tokenIndex] = ":"; break;
@@ -19,6 +20,7 @@ namespace Conanti
 						case "function": tokenizedContent[lineIndex][tokenIndex] = "def"; break;
 						case "switch": tokenizedContent[lineIndex][tokenIndex] = "match"; break;
 					}
+
 					if (
 						tokenIndex != 0 &&
 						tokenizedContent[lineIndex][tokenIndex-1] == "case" &&
@@ -27,6 +29,7 @@ namespace Conanti
 					{
 						tokenizedContent[lineIndex][tokenIndex] = "_";
 					}
+
 				}
 			}
 

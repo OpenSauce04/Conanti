@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-# nullable disable
-
 namespace Conanti
 {
-	public static class BuildInfo
+	internal static class BuildInfo
 	{
-		public static String[] SourceFiles;
-		public static String[] BuiltFiles;
-		public static String SourcePath;
-		public static String BuildPath;
-		public static void Init(string srcDir)
+		public static String[] SourceFiles = null!;
+		public static String[] BuiltFiles = null!;
+		public static String SourcePath = null!;
+		public static String BuildPath = null!;
+		public static void Generate(string srcDir)
 		{
 			SourcePath = srcDir;
 

@@ -6,7 +6,7 @@ namespace Conanti.Tests
 	{
 		internal static void Main()
 		{
-			Build.Run("Tests");
+			Conanti.RunBuild("Tests");
 		}
 	}
 }
