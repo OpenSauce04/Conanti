@@ -16,7 +16,7 @@ namespace Conanti
 
 				foreach (string token in line)
 				{
-					Console.WriteLine(token + " | " + indent);
+
 					switch (token)
 					{
 						case ":":
