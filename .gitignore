@@ -5,6 +5,7 @@ bin/
 obj/
 *.user
 Properties/*
+Conanti.Tests/build/*
 
 #include
 !Properties/launchSettings.json

@@ -2,10 +2,11 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using Conanti.Build;
 
 namespace Conanti
 {
-	public static partial class Conanti
+    public static partial class Conanti
 	{
 		public static void RunBuild(String buildDir)
 		{
@@ -22,12 +23,14 @@ namespace Conanti
 
 				List<List<string>> tokenizedContent;
 				tokenizedContent = BuildTools.Lex(fileContents); // Tokenize file contents;
+				BuildTools.EnforceConstants(tokenizedContent);
 				tokenizedContent = BuildTools.Scope(tokenizedContent); // Indent code to conform with Python's whitespace-centric syntax
 				tokenizedContent = BuildTools.ReplaceTokens(tokenizedContent); // Replace Conanti tokens with Python tokens
+				tokenizedContent = BuildTools.RemoveEmptyTokens(tokenizedContent);
 
 				List<string> newContent;
 				newContent = BuildTools.StitchTokens(tokenizedContent); // Put tokens back together into a String array that can be written to a file
-				newContent = BuildTools.CleanBlanks(newContent); // Remove blank lines from produced Python file
+				newContent = BuildTools.Clean(newContent); // Remove blank lines from produced Python file
 
 				File.WriteAllLines(BuildInfo.BuiltFiles[fileIndex], newContent);
 			}

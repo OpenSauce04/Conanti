@@ -24,6 +24,9 @@
     <None Update="Tests\Tabs.cnt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Tests\constant.cnt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Tests\TokenReplacement.cnt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

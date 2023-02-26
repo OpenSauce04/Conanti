@@ -5,7 +5,7 @@ namespace Conanti
 {
 	internal static partial class BuildTools
 	{
-		internal static List<string> CleanBlanks(List<string> newContent)
+		internal static List<string> Clean(List<string> newContent)
 		{
 			for (int lineIndex = 0; lineIndex < newContent.Count; lineIndex++)
 			{

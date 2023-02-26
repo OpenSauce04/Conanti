@@ -13,6 +13,7 @@
 		// Messages
 		internal static string NegativeScope(int indent) { return "Scope level hit negative number " + indent; }
 		internal static string NonZeroScope(int indent) { return "File finished at scope level " + indent + "; Should be 0"; }
+		internal static string MutatedConstant = "Variable defined as a constant was mutated";
 
 	}
 }
