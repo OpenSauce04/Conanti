@@ -22,25 +22,34 @@ namespace Conanti
 				string[] fileContents = File.ReadAllLines(BuildInfo.SourceFiles[fileIndex]);
 
 				List<List<string>> tokenizedContent;
-
-				tokenizedContent = BuildTools.Lex(fileContents); // Tokenize file contents;
-
 				List<int> scopeMap;
-				scopeMap = (List<int>) BuildTools.Scope(tokenizedContent, "MAP"); // Create a map of the indentation of the file
+				List<string> untokenizedContent;
 
-				BuildTools.EnforceConstants(tokenizedContent, scopeMap); // Checks all constant values to see if they are mutated
+				// Tokenize file contents
+				tokenizedContent = BuildTools.Lex(fileContents);
 
-				tokenizedContent = (List<List<string>>) BuildTools.Scope(tokenizedContent, "INDENT"); // Indent code to conform with Python's whitespace-centric syntax
+				// Create a map of the indentation of the file
+				scopeMap = (List<int>) BuildTools.Scope(tokenizedContent, "MAP");
 
-				tokenizedContent = BuildTools.ReplaceTokens(tokenizedContent); // Replace Conanti tokens with Python tokens
+				// Checks all constant values to see if they are mutated
+				BuildTools.EnforceConstants(tokenizedContent, scopeMap);
+
+				// Indent code to conform with Python's whitespace-centric syntax
+				tokenizedContent = (List<List<string>>) BuildTools.Scope(tokenizedContent, "INDENT");
+
+				// Replace Conanti tokens with Python tokens
+				tokenizedContent = BuildTools.ReplaceTokens(tokenizedContent);
+
+				// Clean up empty tokens
 				tokenizedContent = BuildTools.RemoveEmptyTokens(tokenizedContent);
 
-				List<string> newContent;
-				newContent = BuildTools.StitchTokens(tokenizedContent); // Put tokens back together into a String array that can be written to a file
+				// Put tokens back together into a String array that can be written to a file
+				untokenizedContent = BuildTools.StitchTokens(tokenizedContent);
 
-				newContent = BuildTools.Clean(newContent); // Remove blank lines from produced Python file
+				// Remove blank lines from produced Python file
+				untokenizedContent = BuildTools.Clean(untokenizedContent);
 
-				File.WriteAllLines(BuildInfo.BuiltFiles[fileIndex], newContent);
+				File.WriteAllLines(BuildInfo.BuiltFiles[fileIndex], untokenizedContent);
 			}
 
 		}
