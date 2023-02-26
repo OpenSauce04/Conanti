@@ -6,10 +6,11 @@ namespace Conanti
 {
 	internal static partial class BuildTools
 	{
-		internal static List<List<string>> Scope(List<List<string>> tokenizedContent)
+		internal static object Scope(List<List<string>> tokenizedContent, string mode)
 		{
 			int lineIndex = 0;
-			int indent = 0;
+			int scope = 0;
+			List<int> scopeMap = new List<int>() {0}; // The scope of the first line is always 0
 
 			foreach (List<string> line in tokenizedContent)
 			{
@@ -20,36 +21,51 @@ namespace Conanti
 					switch (token)
 					{
 						case ":":
-						case "{": indent++; break;
+						case "{": scope++; break;
 
 						case "break":
-						case "}": indent--; break;
+						case "}": scope--; break;
 					}
 
-					if (indent < 0)
+					if (scope < 0)
 					{
-						Console.WriteLine(ErrorMessages.GenerateError(ErrorMessages.NonZeroScope(indent)));
+						Console.WriteLine(ErrorMessages.GenerateError(ErrorMessages.NonZeroScope(scope)));
 						Environment.Exit(1);
 					}
 				}
 
-				if (indent > 0)
+				if (mode == "INDENT")
 				{
-					try
-					{
-						tokenizedContent[lineIndex + 1].Insert(0, String.Concat(Enumerable.Repeat(" ", indent*4 - 1))); // -1 because the existence of the token will create a space when stitched together
-					}
-					catch (ArgumentOutOfRangeException)
-					{
-						Console.WriteLine(ErrorMessages.GenerateError(ErrorMessages.NegativeScope(indent)));
-						Environment.Exit(1);
-					}
-				}
-				lineIndex++;
 
+					if (scope > 0)
+					{
+						try
+						{
+							tokenizedContent[lineIndex + 1].Insert(0, String.Concat(Enumerable.Repeat(" ", scope*4 - 1))); // -1 because the existence of the token will create a space when stitched together
+						}
+						catch (ArgumentOutOfRangeException)
+						{
+							Console.WriteLine(ErrorMessages.GenerateError(ErrorMessages.NegativeScope(scope)));
+							Environment.Exit(1);
+						}
+					}
+
+				} else if (mode == "MAP") {
+					scopeMap.Add(scope);
+				}
+
+				lineIndex++;
 			}
 
-			return tokenizedContent;
+			if (mode == "INDENT")
+			{
+				return tokenizedContent;
+			}
+			else if (mode == "MAP")
+			{
+				return scopeMap;
+			}
+			return new Object();
 		}
 
 		internal static int GetScope(string indents)

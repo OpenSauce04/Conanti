@@ -7,7 +7,7 @@ namespace Conanti
 {
 	internal static partial class BuildTools
 	{
-		internal static void EnforceConstants(List<List<string>> content)
+		internal static void EnforceConstants(List<List<string>> content, List<int> scopeMap)
 		{
 			List<object[]> constList = new List<object[]>();
 			// 0: The token of the constant
@@ -28,7 +28,7 @@ namespace Conanti
 							constList.Add(new object[2]
 							{
 								content[lineIndex][tokenIndex],
-								0 // todo: scoping
+								scopeMap[lineIndex]
 							});
 
 							continue; // Skip subsequent checks, as this is the token where the constant is initialized
@@ -39,13 +39,13 @@ namespace Conanti
 					if (tokenIndex + 1 != content[lineIndex].Count)
 					{
 
-						// If you move out of the scope of a const, stop tracking it
 						for (int i = 0; i < constList.Count(); i++)
 						{
 							if (currentScope < (int) constList[i][1])
-							{
+							{ // Constant is out of scope, stop tracking it
 								constList.RemoveAt(i);
 								i--;
+								continue;
 							}
 
 							foreach (Regex mutator in Tables.Mutators)
