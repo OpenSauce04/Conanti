@@ -5,7 +5,7 @@ namespace Conanti
 {
 	internal static partial class BuildTools
 	{
-		internal static List<List<string>> RemoveEmptyTokens(List<List<string>> content)
+		internal static List<List<string>> CleanEmptyTokens(List<List<string>> content)
 		{
 
 			for (int lineIndex = 0; lineIndex < content.Count; lineIndex++)

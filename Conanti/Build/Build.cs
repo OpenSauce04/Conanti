@@ -41,13 +41,13 @@ namespace Conanti
 				tokenizedContent = BuildTools.ReplaceTokens(tokenizedContent);
 
 				// Clean up empty tokens
-				tokenizedContent = BuildTools.RemoveEmptyTokens(tokenizedContent);
+				tokenizedContent = BuildTools.CleanEmptyTokens(tokenizedContent);
 
 				// Put tokens back together into a String array that can be written to a file
 				untokenizedContent = BuildTools.StitchTokens(tokenizedContent);
 
 				// Remove blank lines from produced Python file
-				untokenizedContent = BuildTools.Clean(untokenizedContent);
+				untokenizedContent = BuildTools.CleanEmptyLines(untokenizedContent);
 
 				File.WriteAllLines(BuildInfo.BuiltFiles[fileIndex], untokenizedContent);
 			}
