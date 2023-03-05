@@ -19,6 +19,10 @@ namespace Conanti
 				for (charIndex = 0; charIndex < line.Length; charIndex++)
 				{
 					char character = line[charIndex];
+					try {
+						string lastTwoChars = line.Substring(charIndex-1, charIndex);
+
+					} catch{}
 
 					if (stringChars.Contains(character))
 					{
@@ -43,6 +47,12 @@ namespace Conanti
 						case '}':
 						case '[':
 						case ']':
+						case '.':
+						case '=':
+						case '+':
+						case '-':
+						case '/':
+						case '*':
 
 						breakpoints.Add(charIndex); breakpoints.Add(charIndex+1); break;
 					}
