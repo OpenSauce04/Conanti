@@ -29,7 +29,7 @@ namespace Conanti
 
 					if (scope < 0)
 					{
-						Console.WriteLine(ErrorMessages.GenerateError(ErrorMessages.NonZeroScope(scope)));
+						Console.WriteLine(ErrorMessages.GenerateError(ErrorMessages.NegativeScope(scope)));
 						Environment.Exit(1);
 					}
 				}

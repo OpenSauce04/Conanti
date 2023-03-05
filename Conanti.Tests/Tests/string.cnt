@@ -1,0 +1,3 @@
+testvar = "} const function ' : break"
+testvar2 = '} const function " : break'
+print(testvar, testvar2)

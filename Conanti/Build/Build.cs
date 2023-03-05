@@ -19,6 +19,8 @@ namespace Conanti
 
 			for (int fileIndex = 0; fileIndex < BuildInfo.SourceFiles.Count(); fileIndex++)
 			{
+				Console.WriteLine(BuildInfo.SourceFiles[fileIndex]);
+
 				string[] fileContents = File.ReadAllLines(BuildInfo.SourceFiles[fileIndex]);
 
 				List<List<string>> tokenizedContent;
@@ -26,7 +28,7 @@ namespace Conanti
 				List<string> untokenizedContent;
 
 				// Tokenize file contents
-				tokenizedContent = BuildTools.Lex(fileContents);
+				tokenizedContent = BuildTools.Tokenize(fileContents);
 
 				// Create a map of the indentation of the file
 				scopeMap = (List<int>) BuildTools.Scope(tokenizedContent, "MAP");
