@@ -19,7 +19,7 @@ namespace Conanti
 
 			for (int fileIndex = 0; fileIndex < BuildInfo.SourceFiles.Count(); fileIndex++)
 			{
-				Console.WriteLine(BuildInfo.SourceFiles[fileIndex]);
+				Console.Write("./" + BuildInfo.SourceFiles[fileIndex]);
 
 				string[] fileContents = File.ReadAllLines(BuildInfo.SourceFiles[fileIndex]);
 
@@ -51,9 +51,13 @@ namespace Conanti
 				// Remove blank lines from produced Python file
 				untokenizedContent = BuildTools.CleanEmptyLines(untokenizedContent);
 
-				File.WriteAllLines(BuildInfo.BuiltFiles[fileIndex], untokenizedContent);
-			}
+				string fileOut = BuildInfo.BuiltFiles[fileIndex];
+				// Write transpiled file
+				File.WriteAllLines(fileOut, untokenizedContent);
 
+				Console.WriteLine(" --> ./"
+				+ new DirectoryInfo(Path.GetDirectoryName(fileOut)!).Name + '/' + Path.GetFileName(fileOut));
+			}
 		}
 
 		internal static void Init()
