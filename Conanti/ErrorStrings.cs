@@ -5,14 +5,11 @@
 		// Generate Error Message
 		internal static string GenericErrorHeader = "ERROR: ";
 		internal static string GenericErrorTail = "\nStopping...";
-		internal static string GenerateError(string message)
-		{
-			return GenericErrorHeader + message + GenericErrorTail;
-		}
+		internal static string GenerateError(string message) => GenericErrorHeader + message + GenericErrorTail;
 
 		// Messages
-		internal static string NegativeScope(int indent) { return "Scope level hit negative number " + indent; }
-		internal static string NonZeroScope(int indent) { return "File finished at scope level " + indent + "; Should be 0"; }
+		internal static string NegativeScope(int indent) => "Scope level hit negative number " + indent;
+		internal static string NonZeroScope(int indent) => "File finished at scope level " + indent + "; Should be 0";
 		internal static string MutatedConstant = "Variable defined as a constant was mutated";
 
 	}

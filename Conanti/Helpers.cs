@@ -2,7 +2,7 @@
 
 namespace Conanti
 {
-	internal class Utils
+	internal class Helpers
 	{
 		// MODIFIED CODE FROM STACKOVERFLOW: https://stackoverflow.com/a/36484371 //
 		internal static void CloneDirectory(string root, string dest)
@@ -38,5 +38,7 @@ namespace Conanti
 			baseDir.Delete(true);
 		}
 		// END //
+
+		internal static string ShortDir(string fullDir) => ".../" + new DirectoryInfo(Path.GetDirectoryName(fullDir)!).Name + '/' + Path.GetFileName(fullDir);
 	}
 }
